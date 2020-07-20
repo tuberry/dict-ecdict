@@ -7,7 +7,7 @@
 ## Installation
 
 ### Requirements
-1. wget
+1. curl
 2. python3
 3. dictd
 4. make

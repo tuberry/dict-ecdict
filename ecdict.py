@@ -3,7 +3,6 @@
 
 import csv
 import sys
-import subprocess
 import textwrap as tp
 
 tag = {'gk':'高','zk':'初','ky':'研','gre':'宝','ielts':'雅','toefl':'托','cet4':'四','cet6':'六'}
@@ -11,8 +10,8 @@ exg = {'p':'过去式','d':'过去分词','i':'现在分词','3':'第三人称',
 pos = {'a':'冠','c':'连','d':'限','i':'介','j':'形','m':'数','n':'名','p':'代','r':'副','u':'叹','t':'不','v':'动','x':'否'}
 
 if __name__ == "__main__":
-    with open('ecdict.csv') as f:
-        with open('ecdict.txt', "w") as g:
+    with open(sys.argv[1]) as f:
+        with open(sys.argv[2], "w") as g:
             reader = csv.reader(f, delimiter=',')
             next(reader, None)
             for l in reader:
@@ -51,6 +50,4 @@ if __name__ == "__main__":
                         if '-|-' not in b:
                             a += '  ' + b
                     g.write('[F] ' + a + '\n')
-    subprocess.call('dictfmt --utf8 --allchars -s ECDICT -u https://github.com/skywind3000/ECDICT -j ecdict < ./ecdict.txt', shell=True)
-    subprocess.call('dictzip ecdict.dict', shell=True)
 #word,phonetic,definition,translation,pos,collins,oxford,tag,bnc,frq,exchange,detail,audio
