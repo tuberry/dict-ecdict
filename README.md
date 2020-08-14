@@ -19,7 +19,7 @@ sudo make install
 ```
 Also, there is a simplified version:
 ```Makefile
-make
+make build_simp
 sudo make install_simp
 ```
 ### Configuration
