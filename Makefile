@@ -1,7 +1,10 @@
-VERSION=1.0.0
 FILENAME=ecdict-ultimate-csv
 CSVNAME=ultimate
 PKGNAME=ecdict
+
+ifndef VERSION
+	VERSION=1.0.0
+endif
 
 all: build
 
