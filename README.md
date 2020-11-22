@@ -12,16 +12,16 @@
 3. dictd
 4. make
 
-### Build && Installation
+### Build && Install
 ```Makefile
-make
+make # FULL=true
 sudo make install
 ```
-Also, there is a simplified version:
-```Makefile
-make build_simp
-sudo make install_simp
+Also it's avaliable in [AUR](https://aur.archlinux.org/packages/dict-ecdict-git/):
 ```
+yay -S dict-ecdict-git
+```
+
 ### Configuration
 Add these lines below in `/etc/dict/dictd.conf`:
 ```dictdconf
@@ -30,22 +30,14 @@ data /usr/share/dict/ecdict.dict.dz
 index /usr/share/dict/ecdict.index
 }
 ```
-For the simplified version:
-```dictdconf
-database ecdicts {
-data /usr/share/dict/ecdicts.dict.dz
-index /usr/share/dict/ecdicts.index
-}
-```
 Then restart `dictd.service`:
 ```shell
 systemctl restart dictd
 ```
 
 ## Acknowledgements
-1. [ECDICT](https://github.com/skywind3000/ECDICT-ultimate): Released under MIT license. All rights reserved by the author.
+1. [ECDICT]: Released under MIT license. All rights reserved by the author.
 2. [dictd](https://en.wikipedia.org/wiki/DICT): Dict file format.
-3. [fcitx5-pinyin-zhwiki](https://github.com/felixonmars/fcitx5-pinyin-zhwiki): Makefile.
 
 [ECDICT]:https://github.com/skywind3000/ECDICT-ultimate
 [license]:https://img.shields.io/badge/license-MIT-purple.svg
