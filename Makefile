@@ -9,10 +9,8 @@ endif
 
 all: $(PKGNAME).index $(PKGNAME).dict.dz
 
-$(FILENAME).zip:
+$(PKGNAME).csv:
 	curl -kLO $(URL)/releases/download/$(VERSION)/$(FILENAME).zip
-
-$(PKGNAME).csv: $(FILENAME).zip
 	unzip $(FILENAME).zip && mv $(CSVNAME).csv $(PKGNAME).csv
 
 $(PKGNAME).txt: $(PKGNAME).csv
