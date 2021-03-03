@@ -24,8 +24,8 @@ $(PKGNAME).index $(PKGNAME).dict.dz: $(PKGNAME).txt
 	dictfmt --utf8 --allchars -s ECDICT -u $(URL) -j $(PKGNAME) < ./$(PKGNAME).txt && dictzip $(PKGNAME).dict
 
 install: $(PKGNAME).index $(PKGNAME).dict.dz
-	install -Dm644 $(PKGNAME).index -t $(DESTDIR)/usr/share/dict/
-	install -Dm644 $(PKGNAME).dict.dz -t $(DESTDIR)/usr/share/dict/
+	install -Dm644 $(PKGNAME).index -t $(DESTDIR)/usr/share/dictd/
+	install -Dm644 $(PKGNAME).dict.dz -t $(DESTDIR)/usr/share/dictd/
 
 clean:
 	-rm -f $(PKGNAME).{index,dict.dz,txt,csv}
