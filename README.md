@@ -6,31 +6,29 @@ A port of Ultimate [ECDICT] database for Dictd
 
 ![image](https://user-images.githubusercontent.com/17917040/87878103-c1ee5480-ca14-11ea-80a2-2f5322a43e01.png)
 
-## Installation
+## Dependencies
 
-### Requirements
+* curl (makedpends)
+* python3 (makedepends)
+* make (makedepends)
+* dictd (depends/makedepends)
 
-1. curl
-2. python3
-3. dictd
-4. make
-
-### Build && Install
+## Build && Installation
 
 ```bash
-make # FULL=true
+make # MINI=false
 sudo make install
 ```
 
-Also it's avaliable in [AUR](https://aur.archlinux.org/packages/dict-ecdict-git/):
+## [AUR](https://aur.archlinux.org/packages/dict-ecdict-git/)
 
 ```bash
-yay -S dict-ecdict-git
+yay -S dict-ecdict-git # for Arch-based distros
 ```
 
-### Configuration
+## Configuration
 
-Add these lines below in `/etc/dict/dictd.conf`:
+Add these lines below to `/etc/dict/dictd.conf`:
 
 ```conf
 database ecdict {
@@ -47,8 +45,9 @@ systemctl restart dictd
 
 ## Acknowledgements
 
-1. [ECDICT]: Released under MIT license. All rights reserved by the author.
-2. [dictd](https://en.wikipedia.org/wiki/DICT): Dict file format.
+* [dictd]: DICT file format
+* [ECDICT]: released under MIT license, all rights reserved by the author
 
+[dictd]:https://en.wikipedia.org/wiki/DICT
 [ECDICT]:https://github.com/skywind3000/ECDICT-ultimate
 [license]:https://img.shields.io/badge/license-MIT-purple.svg

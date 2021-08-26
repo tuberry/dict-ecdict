@@ -1,23 +1,29 @@
 PKGNAME=ecdict
-CSVNAME=ultimate
-FILENAME=ecdict-ultimate-csv
+CSVNAME=ultimate.csv
+FILENAME=ecdict-ultimate-csv.zip
 URL=https://github.com/skywind3000/ECDICT-ultimate
 
 ifndef VERSION
 	VERSION=1.0.0
 endif
 
+ifndef MINI
+	MINI=true
+endif
+
 all: $(PKGNAME).index $(PKGNAME).dict.dz
 
-$(PKGNAME).csv:
-	curl -kLO $(URL)/releases/download/$(VERSION)/$(FILENAME).zip
-	unzip $(FILENAME).zip && mv $(CSVNAME).csv $(PKGNAME).csv
+$(FILENAME):
+	curl -kLO $(URL)/releases/download/$(VERSION)/$(FILENAME)
+
+$(PKGNAME).csv: $(FILENAME)
+	unzip $(FILENAME) && cp $(CSVNAME) $(PKGNAME).csv
 
 $(PKGNAME).txt: $(PKGNAME).csv
-ifdef FULL
-	python ./$(PKGNAME).py ./$(PKGNAME).csv $(PKGNAME).txt
+ifeq ($(MINI),true)
+	python ./$(PKGNAME).py -i ./$(PKGNAME).csv -o $(PKGNAME).txt
 else
-	python ./$(PKGNAME)s.py ./$(PKGNAME).csv $(PKGNAME).txt
+	python ./$(PKGNAME).py -i ./$(PKGNAME).csv -o $(PKGNAME).txt --no-mini
 endif
 
 $(PKGNAME).index $(PKGNAME).dict.dz: $(PKGNAME).txt
@@ -27,5 +33,9 @@ install: $(PKGNAME).index $(PKGNAME).dict.dz
 	install -Dm644 $(PKGNAME).index -t $(DESTDIR)/usr/share/dictd/
 	install -Dm644 $(PKGNAME).dict.dz -t $(DESTDIR)/usr/share/dictd/
 
-clean:
-	-rm -f $(PKGNAME).{index,dict.dz,txt,csv}
+_clean:
+	rm -f $(PKGNAME).{index,dict.dz,txt,csv}
+
+clean: _clean
+	rm -f $(CSVNAME)
+	rm -f $(FILENAME)
