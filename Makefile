@@ -26,7 +26,7 @@ else
 	python ./$(PKGNAME).py -i ./$(PKGNAME).csv -o $(PKGNAME).txt --no-mini
 endif
 
-$(PKGNAME).index $(PKGNAME).dict.dz: $(PKGNAME).txt
+$(PKGNAME).index $(PKGNAME).dict.dz &: $(PKGNAME).txt
 	dictfmt --utf8 --allchars -s ECDICT -u $(URL) -j $(PKGNAME) < ./$(PKGNAME).txt && dictzip $(PKGNAME).dict
 
 install: $(PKGNAME).index $(PKGNAME).dict.dz
