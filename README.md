@@ -8,10 +8,10 @@ A port of Ultimate [ECDICT] database for Dictd
 
 ## Dependencies
 
-* curl (makedpends)
-* python3 (makedepends)
-* make (makedepends)
-* dictd (depends/makedepends)
+* curl (make)
+* python3 (make)
+* make (make)
+* dictd (depends/make)
 
 ## Build && Installation
 
