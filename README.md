@@ -6,18 +6,10 @@ A port of Ultimate [ECDICT] database for Dictd
 
 ![image](https://user-images.githubusercontent.com/17917040/87878103-c1ee5480-ca14-11ea-80a2-2f5322a43e01.png)
 
-## Dependencies
-
-* curl (make)
-* python3 (make)
-* make (make)
-* dictd (depends/make)
-
-## Build && Installation
+## Installation
 
 ```bash
-make # MINI=false
-sudo make install
+meson setup build && meson install -C build
 ```
 
 ## [AUR](https://aur.archlinux.org/packages/dict-ecdict-git/)
