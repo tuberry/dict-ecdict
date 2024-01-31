@@ -1,1 +1,0 @@
-option('mini', type: 'boolean', value: true, description: 'as brief as possible or not')
